@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import FormInput from "./components/FormInput";
+import TaskItem from "./components/TaskItem";
 
 function App() {
+  const [taskItem, setTaskItem] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const taskItem = e.target.elements.taks_input.value;
+    taskItem && setTaskItem((prevItem) => [...prevItem, taskItem]);
+    e.target.elements.taks_input.value = "";
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App__wrap">
+      <FormInput handleSubmit={handleSubmit} taskItem={taskItem} />
+      <div className="task__wrap">
+        {taskItem.map((taskItem, index) => (
+          <TaskItem taskTitle={taskItem} key={taskItem + index} />
+        ))}
+      </div>
     </div>
   );
 }
