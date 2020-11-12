@@ -5,25 +5,29 @@ import TaskItem from "./components/TaskItem";
 
 function App() {
   const [taskItem, setTaskItem] = useState([]);
+  const [formValue, setFormValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const taskItem = e.target.elements.taks_input.value;
-    taskItem && setTaskItem((prevItem) => [...prevItem, taskItem]);
-    e.target.elements.taks_input.value = "";
+    formValue && setTaskItem((prevItem) => [...prevItem, formValue]);
+    formValue && setFormValue("");
   };
 
-  const handleEdit = (taskTitle) => {
-    console.log(taskTitle);
+  const handleEdit = (id) => {
+    setFormValue(taskItem[id]);
   };
   const handleDelete = (taskTitle) => {
-    let bolek = taskItem.filter((task) => taskTitle !== task);
     setTaskItem(taskItem.filter((task) => taskTitle !== task));
   };
 
   return (
     <div className="App__wrap">
-      <FormInput handleSubmit={handleSubmit} taskItem={taskItem} />
+      <FormInput
+        handleSubmit={handleSubmit}
+        taskItem={taskItem}
+        formValue={formValue}
+        setFormValue={setFormValue}
+      />
       <div className="task__wrap">
         {taskItem.map((taskItem, index) => (
           <TaskItem

@@ -1,5 +1,7 @@
-import React from "react";
-const FormInput = ({ handleSubmit }) => {
+const FormInput = ({ handleSubmit, formValue, setFormValue }) => {
+  const handleChange = (e) => {
+    setFormValue(e.target.value);
+  };
   return (
     <div>
       <form onSubmit={(e) => handleSubmit(e)} className="form__addtask">
@@ -8,6 +10,8 @@ const FormInput = ({ handleSubmit }) => {
           placeholder="Add new task"
           label="task input"
           name="taks_input"
+          value={formValue}
+          onChange={(e) => handleChange(e)}
         />
         <button type="submit" value="Submit">
           Add Task

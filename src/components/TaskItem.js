@@ -7,7 +7,7 @@ const TaskItem = ({ taskTitle, handleDelete, handleEdit, id }) => {
         <h4>{taskTitle}</h4>
       </div>
       <div className="task__tool_wraper">
-        <button name="edit" onClick={(e) => handleEdit(taskTitle)}>
+        <button name="edit" onClick={(e) => handleEdit(id)}>
           edit
         </button>
         <button name="delete" onClick={(e) => handleDelete(taskTitle)}>
