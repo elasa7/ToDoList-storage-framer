@@ -13,12 +13,26 @@ function App() {
     e.target.elements.taks_input.value = "";
   };
 
+  const handleEdit = (taskTitle) => {
+    console.log(taskTitle);
+  };
+  const handleDelete = (taskTitle) => {
+    let bolek = taskItem.filter((task) => taskTitle !== task);
+    setTaskItem(taskItem.filter((task) => taskTitle !== task));
+  };
+
   return (
     <div className="App__wrap">
       <FormInput handleSubmit={handleSubmit} taskItem={taskItem} />
       <div className="task__wrap">
         {taskItem.map((taskItem, index) => (
-          <TaskItem taskTitle={taskItem} key={taskItem + index} />
+          <TaskItem
+            id={index}
+            taskTitle={taskItem}
+            key={taskItem + index}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
         ))}
       </div>
     </div>
