@@ -1,9 +1,11 @@
-const FormInput = ({ handleSubmit, formValue, setFormValue }) => {
+import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
+
+const FormInput = ({ handleSubmit, formValue, setFormValue, isEdit }) => {
   const handleChange = (e) => {
     setFormValue(e.target.value);
   };
   return (
-    <div>
+    <div className="form__wrap">
       <form onSubmit={(e) => handleSubmit(e)} className="form__addtask">
         <input
           type="text"
@@ -14,9 +16,17 @@ const FormInput = ({ handleSubmit, formValue, setFormValue }) => {
           onChange={(e) => handleChange(e)}
         />
         <button type="submit" value="Submit">
-          Add Task
+          {isEdit ? "Save " : "Add Task"}
         </button>
       </form>
+      <div className="info__wrap">
+        {isEdit && (
+          <div className="info__icon_wrap">
+            <EditIcon className="info__icon" fill="white" />
+          </div>
+        )}
+        {isEdit && <h5>Editing mode is on, edit and save your changes</h5>}
+      </div>
     </div>
   );
 };

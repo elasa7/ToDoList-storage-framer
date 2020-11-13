@@ -42,6 +42,7 @@ function App() {
         taskItem={taskItem}
         formValue={formValue}
         setFormValue={setFormValue}
+        isEdit={isEdit}
       />
       <div className="task__wrap">
         {taskItem.map((taskItem, index) => (

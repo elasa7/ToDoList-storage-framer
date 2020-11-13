@@ -1,6 +1,6 @@
 import React from "react";
-import DeleteIcon from "../img/delete_icon.svg";
-import EditIcon from "../img/edit_icon.svg";
+import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
+import { ReactComponent as DeleteIcon } from "../img/delete_icon.svg";
 
 const TaskItem = ({ taskTitle, handleDelete, handleEdit, id }) => {
   return (
@@ -10,10 +10,10 @@ const TaskItem = ({ taskTitle, handleDelete, handleEdit, id }) => {
       </div>
       <div className="task__tool_wraper">
         <button name="edit" onClick={(e) => handleEdit(id)}>
-          <img src={EditIcon} className="task__icon" alt="edit icon" />
+          <EditIcon className="task__icon" />
         </button>
         <button name="delete" onClick={(e) => handleDelete(taskTitle)}>
-          <img src={DeleteIcon} className="task__icon" alt="delete icon" />
+          <DeleteIcon className="task__icon" />
         </button>
       </div>
     </div>
