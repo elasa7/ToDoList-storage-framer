@@ -5,6 +5,7 @@ export const lightTheme = {
   bgTaskColor: "#ECE3D6",
   taskBtnBgColor: "#FFF8ED",
   iconColor: "#3F3931",
+  toolBtnBg: "#FFF8ED",
 };
 
 export const darkTheme = {
@@ -14,4 +15,5 @@ export const darkTheme = {
   bgTaskColor: "#3F3931",
   taskBtnBgColor: "#FFF8ED",
   iconColor: "#FFF8ED",
+  toolBtnBg: "#514B42",
 };

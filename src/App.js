@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle, globalStyleFn } from "./themes/globalStyle";
 import "./App.css";
 import FormInput from "./components/FormInput";
 import Header from "./components/Header";
@@ -9,6 +11,7 @@ function App() {
   const [formValue, setFormValue] = useState("");
   const [editIndex, setEditIndex] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
+  const [switchTheme, setSwitchTheme] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,32 +35,44 @@ function App() {
     setIsEdit(true);
     setEditIndex(id);
   };
+
   const handleDelete = (taskTitle) => {
     !isEdit && setTaskItem(taskItem.filter((task) => taskTitle !== task));
   };
 
+  const theme = globalStyleFn(switchTheme);
+
   return (
-    <div className="App__wrap">
-      <Header />
-      <FormInput
-        handleSubmit={handleSubmit}
-        taskItem={taskItem}
-        formValue={formValue}
-        setFormValue={setFormValue}
-        isEdit={isEdit}
-      />
-      <div className="task__wrap">
-        {taskItem.map((taskItem, index) => (
-          <TaskItem
-            id={index}
-            taskTitle={taskItem}
-            key={taskItem + index}
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-          />
-        ))}
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <div className="App__wrap">
+        <Header
+          theme={theme}
+          switchTheme={switchTheme}
+          setSwitchTheme={setSwitchTheme}
+        />
+        <FormInput
+          handleSubmit={handleSubmit}
+          taskItem={taskItem}
+          formValue={formValue}
+          setFormValue={setFormValue}
+          isEdit={isEdit}
+          theme={theme}
+        />
+        <div className="task__wrap">
+          {taskItem.map((taskItem, index) => (
+            <TaskItem
+              id={index}
+              taskTitle={taskItem}
+              key={taskItem + index}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+              theme={theme}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

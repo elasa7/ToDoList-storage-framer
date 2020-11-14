@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap");
 *,
 *::after,
 *::before {
@@ -75,14 +76,14 @@ h1 {
 .form__addtask {
   display: flex;
 }
-.form__addtask input {
-  height: 3rem;
-  padding: 1rem;
-  width: 100%;
-}
+
 .form__addtask button {
   padding: 0 1rem;
   white-space: nowrap;
+  border: 0;
+  outline: 0;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 /* -----------------------Info under Input-------------------- */
@@ -128,7 +129,6 @@ h1 {
   cursor: pointer;
 }
 .task__icon {
-  fill: black;
   width: 32px;
   height: auto;
   pointer-events: none;

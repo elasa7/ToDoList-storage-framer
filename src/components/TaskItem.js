@@ -1,22 +1,30 @@
 import React from "react";
+import styled from "styled-components";
 import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
 import { ReactComponent as DeleteIcon } from "../img/delete_icon.svg";
 
-const TaskItem = ({ taskTitle, handleDelete, handleEdit, id }) => {
+const TaskWraper = styled.div`
+  background: ${({ theme }) => theme.bgTaskColor};
+`;
+const ToolBtn = styled.button`
+  background: ${({ theme }) => theme.toolBtnBg};
+`;
+
+const TaskItem = ({ taskTitle, handleDelete, handleEdit, id, theme }) => {
   return (
-    <div className="task__wraper">
+    <TaskWraper theme={theme} className="task__wraper">
       <div className="task__title">
         <h4>{taskTitle}</h4>
       </div>
       <div className="task__tool_wraper">
-        <button name="edit" onClick={(e) => handleEdit(id)}>
-          <EditIcon className="task__icon" />
-        </button>
-        <button name="delete" onClick={(e) => handleDelete(taskTitle)}>
-          <DeleteIcon className="task__icon" />
-        </button>
+        <ToolBtn onClick={(e) => handleEdit(id)}>
+          <EditIcon className="task__icon" fill={theme.iconColor} />
+        </ToolBtn>
+        <ToolBtn name="delete" onClick={(e) => handleDelete(taskTitle)}>
+          <DeleteIcon className="task__icon" fill={theme.iconColor} />
+        </ToolBtn>
       </div>
-    </div>
+    </TaskWraper>
   );
 };
 
