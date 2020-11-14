@@ -11,24 +11,77 @@ body {
   align-content: center;
   justify-content: center;
 }
+h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+}
 .App__wrap {
   display: flex;
   flex-direction: column;
-  background: rgb(244, 144, 22);
   min-width: 30vw;
 }
 
+/* ----------------------- Header Style ------------------ */
+.header__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10rem;
+  position: relative;
+}
+.theme__switch_wrap {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+.theme__switch_wrap img {
+  width: 40px;
+}
+.welcome__wrap {
+  display: flex;
+  border-bottom: 1px solid rgb(224, 221, 210);
+}
+.hello__welcome {
+  font-weight: 300;
+  margin: 0 0.5rem 0 5rem;
+}
+.edit__welcom_name {
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.count__task_wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 10rem;
+}
+.task__number {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(157, 71, 17);
+  color: wheat;
+  border-radius: 50%;
+  margin: -0.5rem 0.5rem;
+}
 /* ----------------------- From Style -------------------- */
 .form__wrap {
-  padding: 1rem;
+  margin: 2rem 0;
 }
 .form__addtask {
   display: flex;
 }
 .form__addtask input {
+  height: 3rem;
+  padding: 1rem;
   width: 100%;
 }
 .form__addtask button {
+  padding: 0 1rem;
   white-space: nowrap;
 }
 

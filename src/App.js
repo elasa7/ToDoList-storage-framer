@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import FormInput from "./components/FormInput";
+import Header from "./components/Header";
 import TaskItem from "./components/TaskItem";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <div className="App__wrap">
+      <Header />
       <FormInput
         handleSubmit={handleSubmit}
         taskItem={taskItem}
