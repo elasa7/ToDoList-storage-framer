@@ -23,10 +23,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme }) => {
       </div>
       <div className="count__task_wrap">
         <h3>you have</h3>
-        <div
-          className="task__number"
-          style={{ background: theme.secondaryColor }}
-        >
+        <div className="task__number" style={{ background: theme.accentColor }}>
           <h2>5</h2>
         </div>
         <h3>task to Do</h3>

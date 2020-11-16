@@ -3,9 +3,8 @@ import { lightTheme, darkTheme } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
 body{
- background:${({ theme }) => theme.mainBg};
- color:${({ theme }) => theme.iconColor}
-
+ background:${({ theme }) => theme.mainContentBg};
+ color:${({ theme }) => theme.textColor}
  }`;
 
 export const globalStyleFn = (switchTheme) => {

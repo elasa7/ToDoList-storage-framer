@@ -4,10 +4,10 @@ import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
 import { ReactComponent as DeleteIcon } from "../img/delete_icon.svg";
 
 const TaskWraper = styled.div`
-  background: ${({ theme }) => theme.bgTaskColor};
+  background: ${({ theme }) => theme.taskItemBg};
 `;
 const ToolBtn = styled.button`
-  background: ${({ theme }) => theme.toolBtnBg};
+  background: ${({ theme }) => theme.iconToolBg};
 `;
 
 const TaskItem = ({ taskTitle, handleDelete, handleEdit, id, theme }) => {

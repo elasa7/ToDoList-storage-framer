@@ -1,11 +1,11 @@
 import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
+import { ReactComponent as InfoIcon } from "../img/info_icon.svg";
 import styled from "styled-components";
 
 const InputAdd = styled.input`
   all: unset;
-  background: ${({ theme }) => theme.bgTaskColor};
+  background: ${({ theme }) => theme.taskItemBg};
   color: ${({ theme }) => theme.iconColor};
-  border: 1px solid ${({ theme }) => theme.bgTaskColor};
   width: 100%;
   height: 1.5rem;
   padding: 1rem;
@@ -20,11 +20,25 @@ const InputAdd = styled.input`
 
 const AddBtn = styled.button`
   all: unset;
-  background: ${({ theme }) => theme.secondaryColor};
+  background: ${({ theme }) => theme.accentColor};
   color: "${({ theme }) => theme.iconColor}";
 `;
 
-const FormInput = ({ handleSubmit, formValue, setFormValue, isEdit }) => {
+const InfoBox = styled.div`
+  border: 1px solid ${({ theme }) => theme.taskItemBg};
+`;
+
+const HighLightSpan = styled.span`
+  color: ${({ theme }) => theme.accentColor};
+`;
+
+const FormInput = ({
+  handleSubmit,
+  formValue,
+  setFormValue,
+  isEdit,
+  theme,
+}) => {
   const handleChange = (e) => {
     setFormValue(e.target.value);
   };
@@ -39,20 +53,24 @@ const FormInput = ({ handleSubmit, formValue, setFormValue, isEdit }) => {
           name="taks_input"
           value={formValue}
           onChange={(e) => handleChange(e)}
-          // style={{ background: theme.toolBtnBg }}
         />
         <AddBtn type="submit" value="Submit">
           {isEdit ? "Save " : "Add Task"}
         </AddBtn>
       </form>
-      <div className="info__wrap">
+      <InfoBox className="info__wrap">
         {isEdit && (
           <div className="info__icon_wrap">
-            <EditIcon className="info__icon" fill="white" />
+            <InfoIcon className="info__icon" fill="#28241E" />
           </div>
         )}
-        {isEdit && <h5>Editing mode is on, edit and save your changes</h5>}
-      </div>
+        {isEdit && (
+          <h5>
+            Editing mode is <HighLightSpan>ON</HighLightSpan> , edit and{" "}
+            <HighLightSpan>SAVE</HighLightSpan> your changes
+          </h5>
+        )}
+      </InfoBox>
     </div>
   );
 };
