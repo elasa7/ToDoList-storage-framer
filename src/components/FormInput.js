@@ -1,4 +1,3 @@
-import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
 import { ReactComponent as InfoIcon } from "../img/info_icon.svg";
 import styled from "styled-components";
 

@@ -26,10 +26,9 @@ h1 {
 .header__wrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   width: 100%;
-  height: 10rem;
   position: relative;
 }
 .theme__switch_wrap {
@@ -43,14 +42,25 @@ h1 {
 .welcome__wrap {
   display: flex;
   border-bottom: 1px solid rgb(224, 221, 210);
+  align-items: center;
+  margin-top: 5rem;
 }
 .hello__welcome {
   font-weight: 300;
   margin: 0 0.5rem 0 5rem;
 }
+.name__welcome {
+  cursor: pointer;
+}
 .edit__welcom_name {
   align-self: flex-end;
   cursor: pointer;
+}
+
+.edit__name_input {
+  all: unset;
+  font-size: 2rem;
+  margin: 0.5rem 0 0 1rem;
 }
 
 .count__task_wrap {
