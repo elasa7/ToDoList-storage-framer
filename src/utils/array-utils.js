@@ -1,7 +1,8 @@
 export const remove = (arr, id) => {
   const newArry = [...arr];
   newArry.splice(id, 1);
-  return newArry;
+  console.log(id);
+  return [...newArry];
 };
 
 export const add = (arr, newItem) => {

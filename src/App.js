@@ -35,8 +35,9 @@ function App() {
     setEditIndex(id);
   };
 
-  const handleDelete = (taskTitle, id) => {
-    setTaskItem(remove(taskItem, taskTitle, id));
+  const handleDelete = (id) => {
+    console.log(id);
+    setTaskItem(remove(taskItem, id));
   };
 
   const theme = globalStyleFn(switchTheme);
