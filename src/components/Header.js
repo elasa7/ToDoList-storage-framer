@@ -4,7 +4,7 @@ import MoonIcon from "../img/moon_icon.png";
 import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
 import ProfileName from "./ProfileName";
 
-const Header = ({ theme, switchTheme, setSwitchTheme }) => {
+const Header = ({ theme, switchTheme, setSwitchTheme, taskCount }) => {
   const [editName, setEditName] = useState(false);
   const [currentName, setcurrentName] = useState("John");
 
@@ -46,7 +46,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme }) => {
       <div className="count__task_wrap">
         <h3>you have</h3>
         <div className="task__number" style={{ background: theme.accentColor }}>
-          <h2>5</h2>
+          <h2>{taskCount}</h2>
         </div>
         <h3>task to Do</h3>
       </div>

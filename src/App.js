@@ -50,6 +50,7 @@ function App() {
           theme={theme}
           switchTheme={switchTheme}
           setSwitchTheme={setSwitchTheme}
+          taskCount={taskItem.length}
         />
         <FormInput
           handleSubmit={handleSubmit}
