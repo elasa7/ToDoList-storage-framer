@@ -20,7 +20,7 @@ const TaskItem = ({ taskTitle, handleDelete, handleEdit, id, theme }) => {
         <ToolBtn onClick={(e) => handleEdit(id)}>
           <EditIcon className="task__icon" fill={theme.iconColor} />
         </ToolBtn>
-        <ToolBtn name="delete" onClick={(e) => handleDelete(taskTitle)}>
+        <ToolBtn name="delete" onClick={(e) => handleDelete(taskTitle, id)}>
           <DeleteIcon className="task__icon" fill={theme.iconColor} />
         </ToolBtn>
       </div>

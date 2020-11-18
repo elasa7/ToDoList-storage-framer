@@ -1,9 +1,6 @@
-export const remove = (arr, item) => {
+export const remove = (arr, id) => {
   const newArry = [...arr];
-  newArry.splice(
-    newArry.findIndex((i) => i === item),
-    1
-  );
+  newArry.splice(id, 1);
   return newArry;
 };
 
@@ -15,5 +12,5 @@ export const saveEdit = (arr, editIndex, formValue) => {
   const newArry = arr.map((e, index) =>
     index === editIndex ? (e = formValue) : e
   );
-  return [...newArry];
+  return newArry;
 };

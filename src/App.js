@@ -5,6 +5,7 @@ import "./App.css";
 import FormInput from "./components/FormInput";
 import Header from "./components/Header";
 import TaskItem from "./components/TaskItem";
+import { add, remove, saveEdit } from "./utils/array-utils";
 
 function App() {
   const [taskItem, setTaskItem] = useState([]);
@@ -15,16 +16,14 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (formValue && !isEdit) {
-      setTaskItem((prevItem) => [...prevItem, formValue]);
+      setTaskItem(add(taskItem, formValue));
       setFormValue("");
     }
+
     if (isEdit) {
-      setTaskItem([
-        ...taskItem.map((e, index) =>
-          index === editIndex ? (e = formValue) : e
-        ),
-      ]);
+      setTaskItem(saveEdit(taskItem, editIndex, formValue));
       setFormValue("");
     }
     setIsEdit(false);
@@ -36,8 +35,8 @@ function App() {
     setEditIndex(id);
   };
 
-  const handleDelete = (taskTitle) => {
-    !isEdit && setTaskItem(taskItem.filter((task) => taskTitle !== task));
+  const handleDelete = (taskTitle, id) => {
+    setTaskItem(remove(taskItem, taskTitle, id));
   };
 
   const theme = globalStyleFn(switchTheme);
