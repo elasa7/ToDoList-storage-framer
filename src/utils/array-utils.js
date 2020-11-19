@@ -1,19 +1,26 @@
-export const remove = (arr, item) => {
+export const remove = (arr, index) => {
   const newArry = [...arr];
   newArry.splice(
-    newArry.findIndex((i) => i === item),
+    newArry.map(({ id }) => id).findIndex((id) => id=== index),
     1
   );
   return newArry;
 };
 
-export const add = (arr, newItem) => {
-  return [...arr, newItem];
+export const add = (tittle, id) => {
+  let newIndex = {
+    id,
+    tittle,
+  };
+  return newIndex;
 };
 
 export const saveEdit = (arr, editIndex, formValue) => {
-  const newArry = arr.map((e, index) =>
-    index === editIndex ? (e = formValue) : e
-  );
+  const newArry = [
+    ...arr.map((task) =>
+      task.id === editIndex ? { id: task.id, tittle: formValue } : task
+    ),
+  ];
   return newArry;
 };
+

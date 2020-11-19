@@ -13,12 +13,14 @@ function App() {
   const [editIndex, setEditIndex] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
   const [switchTheme, setSwitchTheme] = useState(false);
+  const [genId, setgenId] = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (formValue && !isEdit) {
-      setTaskItem(add(taskItem, formValue));
+      setgenId((prev) => prev + 1);
+      setTaskItem((prev) => [...prev, add(formValue, genId)]);
       setFormValue("");
     }
 
@@ -30,11 +32,10 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    setFormValue(taskItem[id]);
+    setFormValue(taskItem[id].tittle);
     setIsEdit(true);
     setEditIndex(id);
   };
-
 
   const theme = globalStyleFn(switchTheme);
 
@@ -57,13 +58,13 @@ function App() {
           theme={theme}
         />
         <div className="task__wrap">
-          {taskItem.map((taskTittle, index) => (
+          {taskItem.map(({ tittle, id }) => (
             <TaskItem
-              id={index}
-              taskTitle={taskTittle}
-              key={index}
+              id={id}
+              taskTitle={tittle}
+              key={id}
               handleEdit={handleEdit}
-              handleDelete={() => setTaskItem(remove(taskItem, taskTittle))}
+              handleDelete={() => setTaskItem(remove(taskItem, id))}
               theme={theme}
             />
           ))}
