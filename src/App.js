@@ -5,9 +5,10 @@ import "./App.css";
 import FormInput from "./components/FormInput";
 import Header from "./components/Header";
 import TaskItem from "./components/TaskItem";
-import { add, remove, saveEdit } from "./utils/array-utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { taskVariant } from "./utils/animation";
+import { add, remove, saveEdit, updateInput } from "./utils/array-utils";
+
 function App() {
   const [taskItem, setTaskItem] = useState([]);
   const [formValue, setFormValue] = useState("");
@@ -33,7 +34,8 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    setFormValue(taskItem[id].tittle);
+    setFormValue(updateInput(taskItem, id));
+
     setIsEdit(true);
     setEditIndex(id);
   };
@@ -49,6 +51,7 @@ function App() {
           switchTheme={switchTheme}
           setSwitchTheme={setSwitchTheme}
           taskCount={taskItem.length}
+          genId={genId}
         />
         <FormInput
           handleSubmit={handleSubmit}
@@ -59,24 +62,22 @@ function App() {
           theme={theme}
         />
         <div className="task__wrap">
-          
           <AnimatePresence initial={false}>
-            {taskItem.map(({ tittle,id }) => (
+            {taskItem.map(({ tittle, id }) => (
               <motion.div
                 key={id}
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                variants={taskVariant}
-              >
-            <TaskItem
-              id={id}
-              taskTitle={tittle}
-              key={id}
-              handleEdit={handleEdit}
-              handleDelete={() => setTaskItem(remove(taskItem, id))}
-              theme={theme}
-            />
+                variants={taskVariant}>
+                <TaskItem
+                  id={id}
+                  taskTitle={tittle}
+                  key={id}
+                  handleEdit={handleEdit}
+                  handleDelete={() => setTaskItem(remove(taskItem, id))}
+                  theme={theme}
+                />
               </motion.div>
             ))}
           </AnimatePresence>
