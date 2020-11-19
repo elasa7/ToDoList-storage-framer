@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, globalStyleFn } from "./themes/globalStyle";
 import "./App.css";
-
 import FormInput from "./components/Form/FormInput";
 import Header from "./components/Header/Header";
 import TaskItem from "./components/Task/TaskItem";
@@ -10,21 +9,26 @@ import TaskItem from "./components/Task/TaskItem";
 import { motion, AnimatePresence } from "framer-motion";
 import { taskVariant } from "./utils/animation";
 import { add, remove, saveEdit, updateInput } from "./utils/array-utils";
+import { v4 as uuid } from "uuid";
 
 function App() {
-  const [taskItem, setTaskItem] = useState([]);
+  let initial = JSON.parse(window.localStorage.getItem("todo")) || [];
+  const [taskItem, setTaskItem] = useState(initial);
   const [formValue, setFormValue] = useState("");
   const [editIndex, setEditIndex] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
   const [switchTheme, setSwitchTheme] = useState(false);
-  const [genId, setgenId] = useState(0);
+  const [taskComplete, setTaskComplete] = useState(0);
+
+  useEffect(() => {
+    window.localStorage.setItem("todo", JSON.stringify(taskItem));
+  }, [taskItem]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (formValue && !isEdit) {
-      setgenId((prev) => prev + 1);
-      setTaskItem((prev) => [...prev, add(formValue, genId)]);
+      setTaskItem((prev) => [...prev, add(formValue, uuid())]);
       setFormValue("");
     }
 
@@ -42,6 +46,11 @@ function App() {
     setEditIndex(id);
   };
 
+  const handleDelete = (id) => {
+    setTaskItem(remove(taskItem, id));
+    setTaskComplete((prev) => prev + 1);
+  };
+
   const theme = globalStyleFn(switchTheme);
 
   return (
@@ -53,7 +62,7 @@ function App() {
           switchTheme={switchTheme}
           setSwitchTheme={setSwitchTheme}
           taskCount={taskItem.length}
-          genId={genId}
+          taskComplete={taskComplete}
         />
         <FormInput
           handleSubmit={handleSubmit}
@@ -65,7 +74,7 @@ function App() {
         />
         <div className="task__wrap">
           <AnimatePresence initial={false}>
-            {taskItem.map(({ tittle, id }) => (
+            {taskItem.map(({ tittle, id }, index) => (
               <motion.div
                 key={id}
                 initial="initial"
@@ -74,10 +83,11 @@ function App() {
                 variants={taskVariant}>
                 <TaskItem
                   id={id}
+                  key={uuid()}
+                  taskNumber={index}
                   taskTitle={tittle}
-                  key={id}
                   handleEdit={handleEdit}
-                  handleDelete={() => setTaskItem(remove(taskItem, id))}
+                  handleDelete={() => handleDelete(id)}
                   theme={theme}
                 />
               </motion.div>

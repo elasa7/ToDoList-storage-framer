@@ -15,13 +15,20 @@ const ToolBtn = styled.button`
   background: ${({ theme }) => theme.iconToolBg};
 `;
 
-const TaskItem = ({ taskTitle, handleDelete, handleEdit, id, theme }) => {
+const TaskItem = ({
+  taskTitle,
+  handleDelete,
+  handleEdit,
+  taskNumber,
+  id,
+  theme,
+}) => {
   return (
     <TaskWraper theme={theme} className={style.task__wraper}>
       <div
         className={style.task__item_num}
         style={{ background: theme.iconToolBg }}>
-        {id + 1}
+        {taskNumber}
       </div>
       <div className={style.task__title_wrap}>
         <h4>{taskTitle}</h4>
@@ -30,7 +37,7 @@ const TaskItem = ({ taskTitle, handleDelete, handleEdit, id, theme }) => {
         <ToolBtn onClick={(e) => handleEdit(id)}>
           <EditIcon className={style.task__icon} fill={theme.iconColor} />
         </ToolBtn>
-        <ToolBtn name="delete" onClick={handleDelete}>
+        <ToolBtn name="delete" onClick={() => handleDelete(id)}>
           <DeleteIcon className={style.task__icon} fill={theme.iconColor} />
         </ToolBtn>
       </div>
