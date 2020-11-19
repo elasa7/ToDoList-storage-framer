@@ -13,14 +13,15 @@ const ToolBtn = styled.button`
 const TaskItem = ({ taskTitle, handleDelete, handleEdit, id, theme }) => {
   return (
     <TaskWraper theme={theme} className="task__wraper">
-      <div className="task__title">
+      <div className="task__item_num"style={{background:theme.iconToolBg}}>{id+1}</div>
+      <div className="task__title_wrap">
         <h4>{taskTitle}</h4>
       </div>
       <div className="task__tool_wraper">
         <ToolBtn onClick={(e) => handleEdit(id)}>
           <EditIcon className="task__icon" fill={theme.iconColor} />
         </ToolBtn>
-        <ToolBtn name="delete" onClick={(e) => handleDelete(id)}>
+        <ToolBtn name="delete" onClick={handleDelete}>
           <DeleteIcon className="task__icon" fill={theme.iconColor} />
         </ToolBtn>
       </div>

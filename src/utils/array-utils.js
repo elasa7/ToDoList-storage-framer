@@ -1,8 +1,10 @@
-export const remove = (arr, id) => {
+export const remove = (arr, item) => {
   const newArry = [...arr];
-  newArry.splice(id, 1);
-  console.log(id);
-  return [...newArry];
+  newArry.splice(
+    newArry.findIndex((i) => i === item),
+    1
+  );
+  return newArry;
 };
 
 export const add = (arr, newItem) => {

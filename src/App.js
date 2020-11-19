@@ -35,10 +35,6 @@ function App() {
     setEditIndex(id);
   };
 
-  const handleDelete = (id) => {
-    console.log(id);
-    setTaskItem(remove(taskItem, id));
-  };
 
   const theme = globalStyleFn(switchTheme);
 
@@ -61,13 +57,13 @@ function App() {
           theme={theme}
         />
         <div className="task__wrap">
-          {taskItem.map((taskItem, index) => (
+          {taskItem.map((taskTittle, index) => (
             <TaskItem
               id={index}
-              taskTitle={taskItem}
-              key={taskItem + index}
+              taskTitle={taskTittle}
+              key={index}
               handleEdit={handleEdit}
-              handleDelete={handleDelete}
+              handleDelete={() => setTaskItem(remove(taskItem, taskTittle))}
               theme={theme}
             />
           ))}

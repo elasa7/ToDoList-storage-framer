@@ -79,6 +79,15 @@ h1 {
   border-radius: 50%;
   margin: -0.5rem 0.5rem;
 }
+.task__item_num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 5rem;
+  border:1px solid rgba(66,66,66,.1);
+  font-weight:800;
+}
 /* ----------------------- From Style -------------------- */
 .form__wrap {
   margin: 2rem 0;
@@ -120,25 +129,33 @@ h1 {
 /* -----------------------Task Style -------------------- */
 .task__wraper {
   display: flex;
-  align-items: center;
+  height: 4rem;
   justify-content: space-between;
+  align-items: center;
   background: gray;
-  padding: 1rem;
   column-gap: 1rem;
+  margin-bottom: 1px;
 }
 
 .task__tool_wraper {
   display: flex;
-  column-gap: 1rem;
+  column-gap: 0.2rem;
+  height: 100%;
+  border:1px solid rgba(66,66,66,.1);
+}
+.task__title_wrap {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 .task__tool_wraper button {
   outline: none;
   border: none;
-  padding: 0.3rem 0.5rem;
   cursor: pointer;
 }
 .task__icon {
   width: 32px;
-  height: auto;
+  height: 100%;
+  margin: 0 1rem 0 1rem;
   pointer-events: none;
 }
