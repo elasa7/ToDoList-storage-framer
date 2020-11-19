@@ -6,7 +6,8 @@ import FormInput from "./components/FormInput";
 import Header from "./components/Header";
 import TaskItem from "./components/TaskItem";
 import { add, remove, saveEdit } from "./utils/array-utils";
-
+import { motion, AnimatePresence } from "framer-motion";
+import { taskVariant } from "./utils/animation";
 function App() {
   const [taskItem, setTaskItem] = useState([]);
   const [formValue, setFormValue] = useState("");
@@ -58,7 +59,16 @@ function App() {
           theme={theme}
         />
         <div className="task__wrap">
-          {taskItem.map(({ tittle, id }) => (
+          
+          <AnimatePresence initial={false}>
+            {taskItem.map(({ tittle,id }) => (
+              <motion.div
+                key={id}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={taskVariant}
+              >
             <TaskItem
               id={id}
               taskTitle={tittle}
@@ -67,7 +77,9 @@ function App() {
               handleDelete={() => setTaskItem(remove(taskItem, id))}
               theme={theme}
             />
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </ThemeProvider>
