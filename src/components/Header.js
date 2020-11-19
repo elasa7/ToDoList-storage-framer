@@ -4,7 +4,7 @@ import MoonIcon from "../img/moon_icon.png";
 import { ReactComponent as EditIcon } from "../img/edit_icon.svg";
 import ProfileName from "./ProfileName";
 
-const Header = ({ theme, switchTheme, setSwitchTheme, taskCount }) => {
+const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
   const [editName, setEditName] = useState(false);
   const [currentName, setcurrentName] = useState("John");
 
@@ -15,6 +15,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount }) => {
   const handleEditName = (e) => {
     setEditName(!editName);
   };
+  console.log(genId);
 
   return (
     <div className="header__wrap">
@@ -44,11 +45,19 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount }) => {
         )}
       </div>
       <div className="count__task_wrap">
-        <h3>you have</h3>
-        <div className="task__number" style={{ background: theme.accentColor }}>
-          <h2>{taskCount}</h2>
+        <div className="task__todo_num">
+          <h3>you have</h3>
+          <div
+            className="task__number"
+            style={{ background: theme.accentColor }}>
+            <h2>{taskCount}</h2>
+          </div>
+          <h3>task to Do</h3>
         </div>
-        <h3>task to Do</h3>
+        <div className="task__done">
+          <h5>Completed tasks</h5>
+          <h3>{genId - taskCount}</h3>
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import "./App.css";
 import FormInput from "./components/FormInput";
 import Header from "./components/Header";
 import TaskItem from "./components/TaskItem";
-import { add, remove, saveEdit } from "./utils/array-utils";
+import { add, remove, saveEdit, updateInput } from "./utils/array-utils";
 
 function App() {
   const [taskItem, setTaskItem] = useState([]);
@@ -32,7 +32,8 @@ function App() {
   };
 
   const handleEdit = (id) => {
-    setFormValue(taskItem[id].tittle);
+    setFormValue(updateInput(taskItem, id));
+
     setIsEdit(true);
     setEditIndex(id);
   };
@@ -48,6 +49,7 @@ function App() {
           switchTheme={switchTheme}
           setSwitchTheme={setSwitchTheme}
           taskCount={taskItem.length}
+          genId={genId}
         />
         <FormInput
           handleSubmit={handleSubmit}
