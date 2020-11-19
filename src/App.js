@@ -69,8 +69,7 @@ function App() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                variants={taskVariant}
-              >
+                variants={taskVariant}>
                 <TaskItem
                   id={id}
                   taskTitle={tittle}

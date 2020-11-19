@@ -16,6 +16,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
   const handleEditName = (e) => {
     setEditName(!editName);
   };
+  console.log(genId);
 
   return (
     <div className="header__wrap">
@@ -23,8 +24,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.5 }}
         className="theme__switch_wrap"
-        onClick={() => handleSwitchTheme()}
-      >
+        onClick={() => handleSwitchTheme()}>
         <img src={switchTheme ? MoonIcon : SunIcon} alt="icon switch" />
         <h5>theme</h5>
       </motion.div>
@@ -32,8 +32,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
         <motion.div
           whileHover={{ scale: 1.3 }}
           whileTap={{ scale: 0.5 }}
-          className="edit__welcom_name"
-        >
+          className="edit__welcom_name">
           <EditIcon
             fill={theme.iconColor}
             width="32px"
@@ -52,8 +51,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="name__welcome"
-            onClick={handleEditName}
-          >
+            onClick={handleEditName}>
             {currentName}
           </motion.h1>
         )}
@@ -63,8 +61,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
           <h3>you have</h3>
           <div
             className="task__number"
-            style={{ background: theme.accentColor }}
-          >
+            style={{ background: theme.accentColor }}>
             <h2>{taskCount}</h2>
           </div>
           <h3>task to Do</h3>
