@@ -25,7 +25,7 @@ const Header = ({ theme, switchTheme, setSwitchTheme, taskCount, genId }) => {
         className="theme__switch_wrap"
         onClick={() => handleSwitchTheme()}
       >
-        <img src={switchTheme ? MoonIcon : SunIcon} alt="icon swithc" />
+        <img src={switchTheme ? MoonIcon : SunIcon} alt="icon switch" />
         <h5>theme</h5>
       </motion.div>
       <motion.div className="welcome__wrap" layout>
