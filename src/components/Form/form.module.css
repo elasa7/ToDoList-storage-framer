@@ -1,0 +1,25 @@
+.form__wrap {
+  margin: 2rem 0;
+}
+.form__addtask {
+  display: flex;
+}
+
+.form__addtask button {
+  padding: 0 1rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+.info__wrap {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  column-gap: 1rem;
+  width: 100%;
+}
+.Alert__box {
+  width: 100%;
+}

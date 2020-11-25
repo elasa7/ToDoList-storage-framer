@@ -1,4 +1,5 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
 
 const ProfileName = ({ setEditName, setcurrentName }) => {
   const handleSubmitName = (e) => {
@@ -10,12 +11,12 @@ const ProfileName = ({ setEditName, setcurrentName }) => {
   };
   return (
     <form onSubmit={(e) => handleSubmitName(e)}>
-      <input
+      <TextField
         type="text"
         placeholder="Edit your name"
-        className="edit__name_input"
         name="newName"
-        maxLength="10"
+        inputProps={{ maxLength: 9, autoComplete: "off" }}
+        variant="filled"
       />
     </form>
   );
