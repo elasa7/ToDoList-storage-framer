@@ -52,7 +52,8 @@ const lightTheme = createMuiTheme({
     },
   },
   typography: {
-    h2: {},
+    h2: {color:colorDark.mainContentBg},
+    body2:{color:'#777',},
   },
 });
 

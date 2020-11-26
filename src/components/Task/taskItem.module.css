@@ -1,11 +1,16 @@
 .task__wraper {
   display: flex;
-  height: 4rem;
   justify-content: space-between;
   align-items: center;
   column-gap: 1rem;
   margin-bottom: 0.5rem;
   padding: 2px;
+}
+.task__wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
 }
 
 .task__item_num {
@@ -17,7 +22,9 @@
 }
 
 .task__title_wrap {
+  margin-left:2rem;
   display: flex;
+  flex-direction:column;
   justify-content: flex-start;
   width: 100%;
 }
