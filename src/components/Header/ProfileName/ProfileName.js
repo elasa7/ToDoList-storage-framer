@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./profileName.module.css";
 
 const ProfileName = ({ setEditName, setcurrentName }) => {
   const handleSubmitName = (e) => {
@@ -13,7 +14,7 @@ const ProfileName = ({ setEditName, setcurrentName }) => {
       <input
         type="text"
         placeholder="Edit your name"
-        className="edit__name_input"
+        className={style.edit__name_input}
         name="newName"
         maxLength="10"
       />

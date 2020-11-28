@@ -1,5 +1,6 @@
-import { ReactComponent as InfoIcon } from "../img/info_icon.svg";
 import styled from "styled-components";
+import EditAlert from "./EditAlert/EditAlert";
+import style from "./form.module.css";
 
 const InputAdd = styled.input`
   all: unset;
@@ -19,16 +20,11 @@ const InputAdd = styled.input`
 
 const AddBtn = styled.button`
   all: unset;
+  padding: 0 1rem;
+  font-weight: bold;
+  white-space: nowrap;
   background: ${({ theme }) => theme.accentColor};
   color: "${({ theme }) => theme.iconColor}";
-`;
-
-const InfoBox = styled.div`
-  border: 1px solid ${({ theme }) => theme.taskItemBg};
-`;
-
-const HighLightSpan = styled.span`
-  color: ${({ theme }) => theme.accentColor};
 `;
 
 const FormInput = ({
@@ -43,8 +39,8 @@ const FormInput = ({
   };
 
   return (
-    <div className="form__wrap">
-      <form onSubmit={(e) => handleSubmit(e)} className="form__addtask">
+    <div className={style.form__wrap}>
+      <form onSubmit={(e) => handleSubmit(e)} className={style.form__addtask}>
         <InputAdd
           type="text"
           placeholder="Add new task"
@@ -57,19 +53,7 @@ const FormInput = ({
           {isEdit ? "Save " : "Add Task"}
         </AddBtn>
       </form>
-      <InfoBox className="info__wrap">
-        {isEdit && (
-          <div className="info__icon_wrap">
-            <InfoIcon className="info__icon" fill="#28241E" />
-          </div>
-        )}
-        {isEdit && (
-          <h5>
-            Editing mode is <HighLightSpan>ON</HighLightSpan> , edit and{" "}
-            <HighLightSpan>SAVE</HighLightSpan> your changes
-          </h5>
-        )}
-      </InfoBox>
+      <EditAlert isEdit={isEdit} />
     </div>
   );
 };

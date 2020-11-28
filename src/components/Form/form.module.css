@@ -1,0 +1,22 @@
+.form__wrap {
+  margin: 2rem 0;
+}
+.form__addtask {
+  display: flex;
+}
+
+.btn__color_wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.select__color_wrap {
+  display: flex;
+  column-gap: 0.3rem;
+}
+.color__switch {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: #77e;
+}
