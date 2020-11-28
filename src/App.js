@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle, globalStyleFn } from "./themes/globalStyle";
 import "./App.css";
-import FormInput from "./components/FormInput";
-import Header from "./components/Header";
-import TaskItem from "./components/TaskItem";
+import FormInput from "./components/Form/FormInput";
+import Header from "./components/Header/Header";
+import TaskItem from "./components/Task/TaskItem";
 import { add, remove, saveEdit, updateInput } from "./utils/array-utils";
 
 function App() {

@@ -1,5 +1,6 @@
-import { ReactComponent as InfoIcon } from "../img/info_icon.svg";
+import { ReactComponent as InfoIcon } from "../../img/info_icon.svg";
 import styled from "styled-components";
+import style from "./form.module.css";
 
 const InputAdd = styled.input`
   all: unset;
@@ -19,6 +20,9 @@ const InputAdd = styled.input`
 
 const AddBtn = styled.button`
   all: unset;
+  padding: 0 1rem;
+  font-weight: bold;
+  white-space: nowrap;
   background: ${({ theme }) => theme.accentColor};
   color: "${({ theme }) => theme.iconColor}";
 `;
@@ -43,8 +47,8 @@ const FormInput = ({
   };
 
   return (
-    <div className="form__wrap">
-      <form onSubmit={(e) => handleSubmit(e)} className="form__addtask">
+    <div className={style.form__wrap}>
+      <form onSubmit={(e) => handleSubmit(e)} className={style.form__addtask}>
         <InputAdd
           type="text"
           placeholder="Add new task"
@@ -57,10 +61,10 @@ const FormInput = ({
           {isEdit ? "Save " : "Add Task"}
         </AddBtn>
       </form>
-      <InfoBox className="info__wrap">
+      <InfoBox className={style.info__wrap}>
         {isEdit && (
-          <div className="info__icon_wrap">
-            <InfoIcon className="info__icon" fill="#28241E" />
+          <div className={style.info__icon_wrap}>
+            <InfoIcon className={style.info__icon} fill="#28241E" />
           </div>
         )}
         {isEdit && (
