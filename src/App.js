@@ -11,7 +11,7 @@ import { v4 as uuid } from "uuid";
 function App() {
   let initial = JSON.parse(window.localStorage.getItem("todo")) || [];
   const [taskItem, setTaskItem] = useState(initial);
-  const [formValue, setFormValue] = useState("");
+
   const [editIndex, setEditIndex] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
   const [switchTheme, setSwitchTheme] = useState(false);
@@ -23,21 +23,19 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let formValue = e.target.elements.taks_input.value;
 
     if (formValue && !isEdit) {
       setTaskItem((prev) => [...prev, add(formValue, uuid())]);
-      setFormValue("");
     }
 
     if (isEdit) {
       setTaskItem(saveEdit(taskItem, editIndex, formValue));
-      setFormValue("");
     }
     setIsEdit(false);
   };
 
   const handleEdit = (id) => {
-    setFormValue(updateInput(taskItem, id));
     setIsEdit(true);
     setEditIndex(id);
   };
@@ -63,10 +61,9 @@ function App() {
         <FormInput
           handleSubmit={handleSubmit}
           taskItem={taskItem}
-          formValue={formValue}
-          setFormValue={setFormValue}
           isEdit={isEdit}
           theme={theme}
+          setValue={() => updateInput(taskItem, editIndex)}
         />
         <div className="task__wrap">
           {taskItem.map(({ tittle, id }, index) => (
