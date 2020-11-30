@@ -23,6 +23,10 @@ const TaskItem = ({
   id,
   theme,
 }) => {
+  const checkEdit = (e) => {
+    handleEdit(id);
+  };
+
   return (
     <TaskWraper theme={theme} className={style.task__wraper}>
       <div
@@ -34,7 +38,7 @@ const TaskItem = ({
         <h4>{taskTitle}</h4>
       </div>
       <div className={style.task__tool_wraper}>
-        <ToolBtn onClick={(e) => handleEdit(id)}>
+        <ToolBtn onClick={(e) => checkEdit(e)}>
           <EditIcon className={style.task__icon} fill={theme.iconColor} />
         </ToolBtn>
         <ToolBtn name="delete" onClick={() => handleDelete(id)}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as InfoIcon } from "../../../img/info_icon.svg";
-import style from "./editAlert.module.css";
 import styled from "styled-components";
+import style from "./editAlert.module.css";
 
 const InfoBox = styled.div`
   border: 1px solid ${({ theme }) => theme.taskItemBg};

@@ -25,6 +25,6 @@ export const saveEdit = (arr, editIndex, formValue) => {
 };
 
 export const updateInput = (arr, index) => {
-  let findIndex = arr.map(({ id }) => id).findIndex((id) => id === index);
-  return arr[findIndex].tittle;
+  let findIndex = arr.find(({ id }) => id === index);
+  return findIndex;
 };

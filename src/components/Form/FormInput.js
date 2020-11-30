@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import EditAlert from "./EditAlert/EditAlert";
-
 import style from "./form.module.css";
 
 const InputAdd = styled.input`
@@ -28,27 +28,28 @@ const AddBtn = styled.button`
   color: "${({ theme }) => theme.iconColor}";
 `;
 
-const FormInput = ({
-  handleSubmit,
-  formValue,
-  setFormValue,
-  isEdit,
-  theme,
-}) => {
-  const handleChange = (e) => {
-    setFormValue(e.target.value);
+const FormInput = ({ handleSubmit, isEdit, setValue }) => {
+  const [onInputChange, setonInputChange] = useState("");
+
+  useEffect(() => {
+    setValue() && setonInputChange(setValue().tittle);
+  }, [setValue]);
+
+  const sendBack = (e) => {
+    handleSubmit(e);
+    setonInputChange("");
   };
 
   return (
     <div className={style.form__wrap}>
-      <form onSubmit={(e) => handleSubmit(e)} className={style.form__addtask}>
+      <form onSubmit={(e) => sendBack(e)} className={style.form__addtask}>
         <InputAdd
           type="text"
           placeholder="Add new task"
           label="task input"
           name="taks_input"
-          value={formValue}
-          onChange={(e) => handleChange(e)}
+          value={onInputChange}
+          onChange={(e) => setonInputChange(e.target.value)}
         />
         <AddBtn type="submit" value="Submit">
           {isEdit ? "Save " : "Add Task"}
