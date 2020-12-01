@@ -23,6 +23,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     let formValue = e.target.elements.taks_input.value;
 
     if (formValue && !isEdit) {
