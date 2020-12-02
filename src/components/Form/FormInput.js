@@ -32,8 +32,8 @@ const FormInput = ({ handleSubmit, isEdit, setValue }) => {
   const [onInputChange, setonInputChange] = useState("");
 
   useEffect(() => {
-    setValue() && setonInputChange(setValue().tittle);
-  }, [setValue]);
+    isEdit && setonInputChange(setValue().tittle);
+  }, [isEdit]);
 
   const sendBack = (e) => {
     handleSubmit(e);
